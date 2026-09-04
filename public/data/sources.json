@@ -6,7 +6,7 @@
       "name": "CFETS / National Interbank Funding Center — Shibor",
       "operator": "China Foreign Exchange Trade System / National Interbank Funding Center",
       "url": "https://www.chinamoney.com.cn/chinese/bkshibor/",
-      "machineEndpoint": "https://www.chinamoney.com.cn/ags/ms/cm-u-bk-shibor/ShiborHis",
+      "machineEndpoint": "https://www.chinamoney.com.cn/ags/ms/cm-u-bk-currency/ShiborPriHis",
       "method": "official-public-data",
       "cadence": "business-day",
       "copyrightNote": "BondStats stores only factual numeric observations, timestamps and source links; no CFETS page design, graphics or prose is reproduced."
@@ -16,7 +16,7 @@
       "name": "CFETS / National Interbank Funding Center — LPR",
       "operator": "China Foreign Exchange Trade System / National Interbank Funding Center",
       "url": "https://www.chinamoney.com.cn/chinese/bklpr/",
-      "machineEndpoint": "https://www.chinamoney.com.cn/ags/ms/cm-u-bk-currency/LprHis",
+      "machineEndpoint": "https://www.chinamoney.com.cn/ags/ms/cm-u-bk-currency/LprChrtCSV",
       "method": "official-public-data",
       "cadence": "monthly",
       "copyrightNote": "BondStats stores only factual numeric observations, timestamps and source links; no CFETS page design, graphics or prose is reproduced."
