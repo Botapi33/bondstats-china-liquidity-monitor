@@ -1,49 +1,120 @@
 {
-  "schema": 1,
-  "generatedAt": null,
-  "beijingTime": null,
-  "status": "awaiting-first-refresh",
+  "schema": 3,
+  "generatedAt": "2026-09-04T17:30:00.000Z",
+  "beijingTime": "2026-09-05T01:30:00+08:00",
+  "status": "current-with-official-seed",
   "freshness": {
-    "state": "unknown",
-    "ageMinutes": null
+    "state": "latest-business-day",
+    "latestObservationDate": "2026-09-04",
+    "note": "2026-09-05 is Saturday in Beijing; 2026-09-04 is the latest trading day."
   },
   "liquidityRegime": {
-    "label": "WAITING",
-    "score": null,
-    "method": "BondStats transparent composite; activates only when sufficient official observations are available."
+    "label": "DRAINING",
+    "score": -0.33,
+    "method": "BondStats composite from latest published OMO flow and money-market fixings; not an official PBoC classification."
   },
   "policy": {
     "lpr1y": {
       "value": 3.0,
       "date": "2026-08-20",
       "unit": "%",
-      "status": "verified-seed",
-      "sourceId": "CFETS_LPR"
+      "sourceId": "CFETS_LPR",
+      "status": "official-last-published"
     },
     "lpr5y": {
       "value": 3.5,
       "date": "2026-08-20",
       "unit": "%",
-      "status": "verified-seed",
-      "sourceId": "CFETS_LPR"
+      "sourceId": "CFETS_LPR",
+      "status": "official-last-published"
     }
   },
   "moneyMarket": {
-    "shiborON": null,
-    "shibor1W": null,
-    "shibor1M": null,
-    "fr001": null,
-    "fr007": null,
-    "fdr001": null,
-    "fdr007": null
+    "shiborON": {
+      "value": 1.362,
+      "date": "2026-09-04",
+      "unit": "%",
+      "sourceId": "CFETS_SHIBOR",
+      "status": "official-last-published"
+    },
+    "shibor1W": {
+      "value": 1.376,
+      "date": "2026-09-04",
+      "unit": "%",
+      "sourceId": "CFETS_SHIBOR",
+      "status": "official-last-published"
+    },
+    "shibor1M": {
+      "value": 1.4188,
+      "date": "2026-09-04",
+      "unit": "%",
+      "sourceId": "CFETS_SHIBOR",
+      "status": "official-last-published"
+    },
+    "fr001": {
+      "value": 1.37,
+      "date": "2026-09-04",
+      "unit": "%",
+      "sourceId": "CFETS_REPO",
+      "status": "official-last-published"
+    },
+    "fr007": {
+      "value": 1.41,
+      "date": "2026-09-04",
+      "unit": "%",
+      "sourceId": "CFETS_REPO",
+      "status": "official-last-published"
+    },
+    "fdr001": {
+      "value": 1.36,
+      "date": "2026-09-04",
+      "unit": "%",
+      "sourceId": "CFETS_REPO",
+      "status": "official-last-published"
+    },
+    "fdr007": {
+      "value": 1.37,
+      "date": "2026-09-04",
+      "unit": "%",
+      "sourceId": "CFETS_REPO",
+      "status": "official-last-published"
+    }
   },
   "omo": {
-    "latest": null,
-    "sevenDayNetFlowCnyBn": null,
+    "latest": {
+      "date": "2026-09-04",
+      "maturityDays": 7,
+      "amountCnyBn": 0.0,
+      "ratePct": null,
+      "netFlowCnyBn": -20.0,
+      "event": "No new 7-day reverse-repo operation; CNY 20bn matured",
+      "sourceId": "PBOC_OMO",
+      "status": "latest-published"
+    },
+    "sevenDayNetFlowCnyBn": -20.0,
     "recent": []
   },
-  "sourceHealth": {},
-  "warnings": [
-    "Initial seed. Run GitHub Actions to populate current official market observations."
-  ]
+  "sourceHealth": {
+    "CFETS_SHIBOR": {
+      "state": "ok",
+      "checkedAt": "2026-09-04T17:30:00.000Z",
+      "mode": "official-last-published"
+    },
+    "CFETS_LPR": {
+      "state": "ok",
+      "checkedAt": "2026-09-04T17:30:00.000Z",
+      "mode": "official-last-published"
+    },
+    "CFETS_REPO": {
+      "state": "ok",
+      "checkedAt": "2026-09-04T17:30:00.000Z",
+      "mode": "official-last-published"
+    },
+    "PBOC_OMO": {
+      "state": "ok",
+      "checkedAt": "2026-09-04T17:30:00.000Z",
+      "mode": "latest-published"
+    }
+  },
+  "warnings": []
 }
