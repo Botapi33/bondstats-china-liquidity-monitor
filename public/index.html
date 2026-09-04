@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>China Liquidity Monitor | BondStats</title>
+<meta name="description" content="Near-real-time view of China's monetary liquidity, official PBoC operations and CFETS money-market benchmarks.">
+<style>
+:root{--bg:#050807;--panel:#09100d;--line:#183126;--line2:#224d38;--text:#eef8f2;--muted:#8da79a;--green:#52f09a;--green2:#17b867;--amber:#efc66c;--red:#ef756d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 60% -10%,#10281d 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit}.shell{width:min(1450px,calc(100% - 32px));margin:auto}.top{height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font-size:13px;letter-spacing:.08em;text-transform:uppercase}.brand{font-weight:800;letter-spacing:.16em}.brand span{color:var(--green)}.health{display:flex;gap:10px;align-items:center;color:var(--muted)}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green)}
+.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:50px;padding:70px 0 46px;border-bottom:1px solid var(--line)}.eyebrow{color:var(--green);font:700 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase}.hero h1{font-size:clamp(44px,6vw,86px);line-height:.92;letter-spacing:-.055em;margin:18px 0 24px;max-width:900px}.hero p{max-width:760px;font-size:17px;line-height:1.65;color:#a9bbb1}.stamp{align-self:end;border-left:1px solid var(--line2);padding-left:26px}.stamp .big{font:600 28px ui-monospace,SFMono-Regular,Menlo,monospace;margin:8px 0}.meta{font-size:12px;color:var(--muted);line-height:1.8}
+.pulse{display:grid;grid-template-columns:1fr 1fr 1fr 1.2fr;border-bottom:1px solid var(--line)}.cell{padding:26px 22px;border-right:1px solid var(--line);min-height:112px}.cell:last-child{border-right:0}.label{font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}.value{font:650 28px ui-monospace,SFMono-Regular,Menlo,monospace;margin-top:12px}.sub{font-size:11px;color:var(--muted);margin-top:7px}.regime{display:flex;align-items:center;justify-content:space-between}.badge{font:800 12px ui-monospace,SFMono-Regular,Menlo,monospace;padding:8px 11px;border:1px solid var(--line2);color:var(--green)}
+.main{display:grid;grid-template-columns:1.2fr .8fr;gap:1px;background:var(--line);margin-top:34px;border:1px solid var(--line)}.pane{background:#060b09;padding:28px}.pane h2{font-size:15px;letter-spacing:.02em;margin:0 0 28px}.curve{height:300px;position:relative;border-left:1px solid var(--line);border-bottom:1px solid var(--line);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:100% 25%,20% 100%}.curve svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.axis{display:flex;justify-content:space-between;font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);padding-top:9px}.rows{border-top:1px solid var(--line)}.row{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:15px;padding:16px 0;border-bottom:1px solid var(--line);align-items:center}.row .n{font-size:13px}.row .v{text-align:right;font:650 14px ui-monospace,SFMono-Regular,Menlo,monospace}.row .d{text-align:right;color:var(--muted);font:11px ui-monospace,SFMono-Regular,Menlo,monospace}
+.section{padding:45px 0;border-bottom:1px solid var(--line)}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:22px}.section h2{margin:0;font-size:21px}.section small{color:var(--muted)}.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}.flow>div{background:#060b09;padding:22px}.flow strong{display:block;font:700 23px ui-monospace,SFMono-Regular,Menlo,monospace;margin-top:10px}.source-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.source{padding:18px 0;border-bottom:1px solid var(--line)}.source b{font-size:13px}.source p{font-size:12px;color:var(--muted);line-height:1.55}.status-ok{color:var(--green)}.status-fallback{color:var(--amber)}footer{padding:32px 0 60px;color:var(--muted);font-size:11px;line-height:1.7}
+@media(max-width:850px){.hero,.main{grid-template-columns:1fr}.hero{gap:20px}.stamp{border-left:0;padding-left:0}.pulse{grid-template-columns:1fr 1fr}.cell:nth-child(2){border-right:0}.cell{border-bottom:1px solid var(--line)}.flow,.source-grid{grid-template-columns:1fr}.row{grid-template-columns:1fr auto}.row .d{grid-column:1/-1;text-align:left}.top{font-size:10px}.hero h1{font-size:48px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top"><div class="brand">BOND<span>STATS</span> / CHINA INTELLIGENCE</div><div class="health"><span class="dot"></span><span id="healthText">loading official data</span></div></header>
+<section class="hero">
+<div><div class="eyebrow">China Liquidity Monitor · Monetary Operations Terminal</div><h1>The pulse of China's monetary system.</h1><p>Near-real-time monitoring of official PBoC liquidity operations and CFETS money-market benchmarks. Operator data is separated from BondStats analytics, with visible source health and fallback status.</p></div>
+<div class="stamp"><div class="label">Beijing market time</div><div class="big" id="bjClock">--:--:--</div><div class="meta" id="lastUpdate">Awaiting data refresh</div></div>
+</section>
+
+<section class="pulse">
+<div class="cell"><div class="label">7D OMO NET FLOW</div><div class="value" id="netFlow">—</div><div class="sub">CNY bn · 7-day reverse repo flow</div></div>
+<div class="cell"><div class="label">SHIBOR O/N</div><div class="value" id="shiborON">—</div><div class="sub" id="shiborDate">official CFETS</div></div>
+<div class="cell"><div class="label">FDR007</div><div class="value" id="fdr007">—</div><div class="sub" id="fdrDate">official CFETS</div></div>
+<div class="cell regime"><div><div class="label">BONDSTATS LIQUIDITY REGIME</div><div class="value" id="regime">—</div><div class="sub">transparent analytical composite</div></div><div class="badge" id="regimeScore">—</div></div>
+</section>
+
+<section class="main">
+<div class="pane"><h2>Money-market term structure</h2><div class="curve"><svg viewBox="0 0 1000 300" preserveAspectRatio="none"><polyline id="curveLine" points="" fill="none" stroke="var(--green)" stroke-width="3" vector-effect="non-scaling-stroke"/></svg></div><div class="axis"><span>O/N</span><span>1W</span><span>1M</span><span>FR007</span><span>FDR007</span></div></div>
+<div class="pane"><h2>Official benchmark tape</h2><div class="rows" id="tape"></div></div>
+</section>
+
+<section class="section"><div class="section-head"><div><div class="eyebrow">Open market operations</div><h2>Latest PBoC liquidity operation</h2></div><small id="omoSource">official public release</small></div>
+<div class="flow"><div><div class="label">OPERATION DATE</div><strong id="omoDate">—</strong></div><div><div class="label">7D AMOUNT</div><strong id="omoAmount">—</strong></div><div><div class="label">OPERATION RATE</div><strong id="omoRate">—</strong></div></div></section>
+
+<section class="section"><div class="section-head"><div><div class="eyebrow">Data integrity</div><h2>Source health</h2></div><small>No synthetic replacement values</small></div><div class="source-grid" id="sources"></div></section>
+
+<footer>
+Data methodology: official public PBoC / CFETS observations where technically retrievable. If an official source cannot be fetched or normalized, BondStats preserves the last verified observation and marks that source as fallback instead of inventing a new value. The BondStats Liquidity Regime is an analytical indicator and is not an official PBoC classification. This interface reproduces no third-party logos, page design, graphics or protected editorial text.
+</footer>
+</div>
+<script>
+let LIVE=null,SOURCES=null;
+const $=id=>document.getElementById(id);
+const pct=m=>m&&Number.isFinite(m.value)?m.value.toFixed(3)+"%":"—";
+const d=m=>m?.date||"awaiting official update";
+function clock(){ $("bjClock").textContent=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Shanghai",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(new Date())+" CST"; }
+setInterval(clock,1000);clock();
+function render(){
+ const l=LIVE;
+ $("healthText").textContent=l.status==="current"?"all source checks current":l.status==="degraded-with-fallbacks"?"live with verified fallbacks":"awaiting refresh";
+ $("lastUpdate").textContent=l.generatedAt?"Last pipeline refresh "+new Date(l.generatedAt).toLocaleString():"Awaiting first GitHub Actions refresh";
+ $("netFlow").textContent=Number.isFinite(l.omo?.sevenDayNetFlowCnyBn)?(l.omo.sevenDayNetFlowCnyBn>0?"+":"")+l.omo.sevenDayNetFlowCnyBn.toFixed(1):"—";
+ $("shiborON").textContent=pct(l.moneyMarket?.shiborON); $("shiborDate").textContent=d(l.moneyMarket?.shiborON)+" · official CFETS";
+ $("fdr007").textContent=pct(l.moneyMarket?.fdr007); $("fdrDate").textContent=d(l.moneyMarket?.fdr007)+" · official CFETS";
+ $("regime").textContent=l.liquidityRegime?.label||"—"; $("regimeScore").textContent=Number.isFinite(l.liquidityRegime?.score)?l.liquidityRegime.score.toFixed(2):"—";
+ const metrics=[["Shibor O/N",l.moneyMarket?.shiborON],["Shibor 1W",l.moneyMarket?.shibor1W],["Shibor 1M",l.moneyMarket?.shibor1M],["FR001",l.moneyMarket?.fr001],["FR007",l.moneyMarket?.fr007],["FDR001",l.moneyMarket?.fdr001],["FDR007",l.moneyMarket?.fdr007],["LPR 1Y",l.policy?.lpr1y],["LPR 5Y+",l.policy?.lpr5y]];
+ $("tape").innerHTML=metrics.map(([n,m])=>`<div class="row"><div class="n">${n}</div><div class="v">${pct(m)}</div><div class="d">${d(m)}</div></div>`).join("");
+ const curve=[l.moneyMarket?.shiborON?.value,l.moneyMarket?.shibor1W?.value,l.moneyMarket?.shibor1M?.value,l.moneyMarket?.fr007?.value,l.moneyMarket?.fdr007?.value];
+ const finite=curve.filter(Number.isFinite); if(finite.length>=2){const min=Math.min(...finite)-.05,max=Math.max(...finite)+.05,span=Math.max(.1,max-min);const pts=curve.map((v,i)=>Number.isFinite(v)?`${i*250},${280-(v-min)/span*250}`:null).filter(Boolean);$("curveLine").setAttribute("points",pts.join(" "));}
+ const o=l.omo?.latest;$("omoDate").textContent=o?.date||"—";$("omoAmount").textContent=Number.isFinite(o?.amountCnyBn)?o.amountCnyBn.toFixed(1)+" bn":"—";$("omoRate").textContent=Number.isFinite(o?.ratePct)?o.ratePct.toFixed(2)+"%":"—";if(o?.sourceUrl)$("omoSource").innerHTML=`<a href="${o.sourceUrl}" target="_blank" rel="noopener">official source ↗</a>`;
+ $("sources").innerHTML=(SOURCES.sources||[]).map(s=>{const h=l.sourceHealth?.[s.id];const state=h?.state||"waiting";return `<div class="source"><div class="label ${state==="ok"?"status-ok":"status-fallback"}">${state.toUpperCase()}</div><b>${s.name}</b><p>${s.cadence} · ${s.method}<br><a href="${s.url}" target="_blank" rel="noopener">source ↗</a></p></div>`}).join("");
+}
+Promise.all([fetch("./data/live.json",{cache:"no-store"}).then(r=>r.json()),fetch("./data/sources.json",{cache:"no-store"}).then(r=>r.json())]).then(([l,s])=>{LIVE=l;SOURCES=s;render()}).catch(e=>{$("healthText").textContent="data endpoint unavailable";console.error(e)});
+</script>
+</body></html>

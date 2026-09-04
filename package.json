@@ -1,0 +1,13 @@
+{
+  "name": "bondstats-china-liquidity-monitor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "update": "node scripts/update-live.mjs",
+    "validate": "node scripts/validate.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

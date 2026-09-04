@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "generatedAt": null,
+  "beijingTime": null,
+  "status": "awaiting-first-refresh",
+  "freshness": {
+    "state": "unknown",
+    "ageMinutes": null
+  },
+  "liquidityRegime": {
+    "label": "WAITING",
+    "score": null,
+    "method": "BondStats transparent composite; activates only when sufficient official observations are available."
+  },
+  "policy": {
+    "lpr1y": {
+      "value": 3.0,
+      "date": "2026-08-20",
+      "unit": "%",
+      "status": "verified-seed",
+      "sourceId": "CFETS_LPR"
+    },
+    "lpr5y": {
+      "value": 3.5,
+      "date": "2026-08-20",
+      "unit": "%",
+      "status": "verified-seed",
+      "sourceId": "CFETS_LPR"
+    }
+  },
+  "moneyMarket": {
+    "shiborON": null,
+    "shibor1W": null,
+    "shibor1M": null,
+    "fr001": null,
+    "fr007": null,
+    "fdr001": null,
+    "fdr007": null
+  },
+  "omo": {
+    "latest": null,
+    "sevenDayNetFlowCnyBn": null,
+    "recent": []
+  },
+  "sourceHealth": {},
+  "warnings": [
+    "Initial seed. Run GitHub Actions to populate current official market observations."
+  ]
+}

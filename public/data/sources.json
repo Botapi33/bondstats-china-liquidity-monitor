@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "sources": [
+    {
+      "id": "CFETS_SHIBOR",
+      "name": "CFETS / National Interbank Funding Center — Shibor",
+      "operator": "China Foreign Exchange Trade System / National Interbank Funding Center",
+      "url": "https://www.chinamoney.com.cn/chinese/bkshibor/",
+      "machineEndpoint": "https://www.chinamoney.com.cn/ags/ms/cm-u-bk-shibor/ShiborHis",
+      "method": "official-public-data",
+      "cadence": "business-day",
+      "copyrightNote": "BondStats stores only factual numeric observations, timestamps and source links; no CFETS page design, graphics or prose is reproduced."
+    },
+    {
+      "id": "CFETS_LPR",
+      "name": "CFETS / National Interbank Funding Center — LPR",
+      "operator": "China Foreign Exchange Trade System / National Interbank Funding Center",
+      "url": "https://www.chinamoney.com.cn/chinese/bklpr/",
+      "machineEndpoint": "https://www.chinamoney.com.cn/ags/ms/cm-u-bk-currency/LprHis",
+      "method": "official-public-data",
+      "cadence": "monthly",
+      "copyrightNote": "BondStats stores only factual numeric observations, timestamps and source links; no CFETS page design, graphics or prose is reproduced."
+    },
+    {
+      "id": "CFETS_REPO",
+      "name": "CFETS — Fixing Repo Rates",
+      "operator": "China Foreign Exchange Trade System / National Interbank Funding Center",
+      "url": "https://www.chinamoney.com.cn/chinese/bkfrr/",
+      "machineEndpoints": [
+        "https://www.chinamoney.com.cn/r/cms/www/chinamoney/data/currency/frr-chrt.csv",
+        "https://www.chinamoney.com.cn/r/cms/www/chinamoney/data/currency/fdr-chrt.csv"
+      ],
+      "method": "official-public-data",
+      "cadence": "business-day",
+      "copyrightNote": "BondStats stores only factual rate observations and source links."
+    },
+    {
+      "id": "PBOC_OMO",
+      "name": "PBoC Open Market Operations announcements",
+      "operator": "People's Bank of China",
+      "url": "https://www.chinamoney.com.cn/chinese/scggyhywgggksccz/",
+      "method": "official-public-release",
+      "cadence": "when-published",
+      "copyrightNote": "BondStats extracts factual operation date, maturity, amount and rate. Announcement wording and page assets are not republished."
+    }
+  ]
+}
